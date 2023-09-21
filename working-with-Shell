@@ -1,0 +1,214 @@
+RKING WITH SHELL
+
+1. What is the home directory for the user called bob?
+solution
+In this case, the user called bob has his home directory located at /home/bob
+You can use the echo $HOME command to find the home directory.
+
+2. Which of the following commands will show you your home directory?
+
+If unsure, try out the commands in the terminal and find the answer!
+solution
+Run the command echo $HOME and it should show the home directory of the current user.
+
+3. In the command echo Welcome, what does the word Welcome represent with respect to the command?
+solution
+Here, echo is the command and Welcome is the argument passed to the command.
+
+4. What type of command is git?
+solution
+Use the type command to find out.
+
+5. Now, lets create some directories! Refer to the below diagram and create the directory called birds
+
+The home directory /home/bob already exists.
+
+Note: If the image is not clear, please right-click on the image and open it in a new tab.
+solution
+Run: mkdir /home/bob/birds
+
+6. Next, create the directories /home/bob/fish/salmon
+
+Use the -p option to create both directories in one go
+
+solution
+mkdir  -p /home/bob/fish/salmon
+
+7. Now create all the remaining directories as per the diagram below.
+solution
+mkdir -p /home/bob/mammals/elephant
+
+mkdir -p /home/bob/mammals/monkey
+
+mkdir /home/bob/birds/eagle
+
+mkdir -p /home/bob/reptile/snake
+
+mkdir -p /home/bob/reptile/frog
+
+mkdir -p /home/bob/amphibian/salamander
+
+8. Moving along. Lets now move the directory called frog from reptile to the directory amphibian
+solution
+mv /home/bob/reptile/frog /home/bob/amphibian
+
+9. Next, rename the directory snake to crocodile
+solution
+mv /home/bob/reptile/snake /home/bob/reptile/crocodile
+
+10. Finally, delete the directory called reptile along with its contents.
+solution
+rm -r /home/bob/reptile
+
+s: List files and directories in the current directory.
+
+bash
+
+ls
+
+pwd: Print the working directory (displays the current directory).
+
+bash
+
+pwd
+
+cd: Change directory.
+
+bash
+
+cd directory_name
+
+mkdir: Create a new directory.
+
+arduino
+
+mkdir directory_name
+
+rmdir: Remove a directory (only works if the directory is empty).
+
+arduino
+
+rmdir directory_name
+
+touch: Create an empty file or update the timestamp of an existing file.
+
+bash
+
+touch filename
+
+rm: Remove files or directories (use with caution, as it deletes files permanently).
+
+bash
+
+rm filename
+rm -r directory_name
+
+cp: Copy files or directories.
+
+bash
+
+cp source destination
+
+mv: Move or rename files or directories.
+
+bash
+
+mv old_name new_name
+
+cat: Display the contents of a file.
+
+bash
+
+cat filename
+
+more/less: View file content one page at a time.
+
+more filename
+less filename
+
+head/tail: Display the beginning or end of a file.
+
+bash
+
+head filename
+tail filename
+
+nano/vim/emacs: Text editors to create or edit files.
+
+nano filename
+vim filename
+emacs filename
+
+grep: Search for a specific pattern in a file or text.
+
+perl
+
+grep pattern filename
+
+ps: List running processes.
+
+ps
+
+kill: Terminate a running process.
+
+bash
+
+kill process_id
+
+man: Display the manual page of a command to get detailed information.
+
+man command_name
+
+ifconfig/ip: Display network configuration information.
+
+ifconfig
+ip addr
+
+ping: Check network connectivity to a specific host.
+
+ping host_or_ip
+
+chmod: Change file permissions.
+
+bash
+
+chmod permissions filename
+
+chown: Change file ownership.
+
+sql
+
+chown user:group filename
+
+tar: Archive files and directories.
+
+bash
+
+tar options archive_name files/directories
+
+wget/curl: Download files from the internet.
+
+mathematica
+
+wget URL
+curl -O URL
+
+sudo: Execute a command with superuser privileges.
+
+bash
+
+sudo command
+
+shutdown/reboot: Shutdown or restart the system.
+
+arduino
+
+    shutdown -h now
+    reboot
+
+These are just a few basic Linux commands to get you started. Linux has a vast ecosystem
+ of commands and utilities, and you can explore more as you become more comfortable with the
+ system. Remember to exercise caution, especially when using commands that can delete or modify files and directories.
+
+
+
