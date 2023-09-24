@@ -1,0 +1,121 @@
+ND RPM
+1. This is a hands-on lab to work on RPM and YUM.
+Since Bob's laptop is running Ubuntu, Dave has offered one of his lab machines that runs Centos 7
+
+To access this Server, run ssh centos-lab, Bob's default password is: caleston123
+
+To exit from the server, type logout or exit on the terminal.
+
+2. Which of the following package managers would you use on this machine (centos-lab)?
+
+To access the centos-lab server, run ssh centos-lab and Bob's default password is: caleston123.
+
+bob@caleston-lp10:~$ ssh centos-lab
+
+To exit from the server, type logout or exit on the terminal.
+solution
+rpm, yum (use either)
+
+3. Use an rpm command and find out the exact package name for wget installed in this server (centos-lab).
+
+To access the centos-lab server, run ssh centos-lab and Bob's default password is: caleston123.
+
+bob@caleston-lp10:~$ ssh centos-lab
+
+To exit from the server, type logout or exit on the terminal.
+
+Use an rpm command and find out the exact package name for wget installed in this server (centos-lab).
+
+rpm -qa | grep wget
+
+4. The package for the firefox browser has been downloaded under /home/bob in the centos-lab server.
+
+Try to install it using RPM.
+
+To access the centos-lab server, run ssh centos-lab and Bob's default password is: caleston123.
+
+bob@caleston-lp10:~$ ssh centos-lab
+
+To exit from the server, type logout or exit on the terminal.
+solution
+Run: sudo rpm -ivh  /home/bob/firefox-68.6.0-1.el7.centos.x86_64.rpm
+
+5. was the installation successful?
+Ans = NO
+
+6. why did it fail?
+solution
+Dependencies not met
+
+7. Let's use YUM to install the firefox on the centos-lab server.
+
+To access the centos-lab server, run ssh centos-lab and Bob's default password is: caleston123.
+
+bob@caleston-lp10:~$ ssh centos-lab
+
+To exit from the server, type logout or exit on the terminal.
+solution
+
+Run: - sudo yum install firefox -y on the centos-lab server.
+
+When it asks for the password, type caleston123.
+
+8. How many software repositories are configured for YUM in the centos-lab server?
+
+To access the centos-lab server, run ssh centos-lab and Bob's default password is: caleston123.
+
+bob@caleston-lp10:~$ ssh centos-lab
+
+To exit from the server, type logout or exit on the terminal.
+solution
+
+Run: sudo yum repolist and count the number of repos.
+
+9. Which package provides the tcpdump command on the centos-lab server?
+
+To access the centos-lab server, run ssh centos-lab and Bob's default password is: caleston123.
+
+bob@caleston-lp10:~$ ssh centos-lab
+
+To exit from the server, type logout or exit on the terminal.
+solution
+
+sudo yum provides tcpdump
+
+DPKG AND APT
+1. This lab requires several commands to be run as the root user. Always use sudo.
+
+Bob's default password is caleston123
+
+2. Which of the following package managers would you use on a debian based distro?
+Solution
+dpkg
+
+3. The package for firefox browser has been downloaded at /root/firefox.deb.
+
+Try to install it using sudo dpkg -i
+
+4. Was the installation successful ?
+Ans = No
+
+5. Why did it fail?
+Check the command output of sudo dpkg -i /root/firefox.deb
+solution
+dependency not met
+
+6. Let's use apt to install it firefox.
+
+Bob's default password is caleston123
+sudo apt install firefox
+
+7. Lets now locate the package to install Chromium browser in the system.
+
+Use apt search functionality to locate the correct package name.
+The browser has the description of: Chromium web browser, open-source version of Chrome
+
+What is the correct package name?
+chromium-browser
+
+8. Finally, remove the firefox browser from the system.
+use the sudo apt remove command
+
