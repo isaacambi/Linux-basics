@@ -1,0 +1,170 @@
+RKING WITH SHELL II
+
+1. Going forward, you would need to make use of sudo for running several commands.
+In such cases, run sudo before the command.
+Example: sudo ls /root
+
+Bob's password is caleston123
+
+2. Remember the directory structure from before? We have added a few more files and 
+directories so that the structure looks like the diagram below.
+
+Create a tarball of the directory called python and compress it using gzip. The 
+compressed tar file should be available at /home/bob/python.tar.gz.
+solution
+
+tar -cf /home/bob/python.tar /home/bob/reptile/snake/python
+gzip /home/bob/python.tar
+
+    tar: This is the command itself, which stands for "tape archive." The tar 
+command is used to manipulate archive files, which can be used to store multiple 
+files and directories while preserving their structure and permissions.
+
+    -cf: These are options and flags that modify the behavior of the tar command:
+        -c: This option tells tar to create a new archive.
+        -f: This option specifies the filename of the archive that will be created.
+ In this case, you're providing the full path and filename for the archive, which is /home/bob/python.tar.
+
+    /home/bob/python.tar: This is the path and filename of the archive that will be created. 
+The archive will be named "python.tar" and will be located in the /home/bob directory.
+
+    /home/bob/reptile/snake/python: This is the path to the directory or file that you want
+ to include in the archive. In this case, you are specifying the directory /home/bob/reptile/snake/python 
+to be included in the archive.
+
+So, when you run this command, it will create a compressed archive file named "python.tar" 
+in the /home/bob directory, and it will contain all the files and subdirectories found in
+ the /home/bob/reptile/snake/python directory, preserving their structure and permissions. 
+This can be useful for creating backups, distributing files, or archiving a specific directory or set of files.
+User
+gzip /home/bob/python.tar
+
+
+The command gzip /home/bob/python.tar is used to compress the "python.tar" file using the
+ Gzip compression algorithm. Let's break down the command:
+
+    gzip: This is the command for the Gzip compression utility. Gzip is a popular compression
+ program used to reduce the size of files.
+
+    /home/bob/python.tar: This is the path and filename of the file you want to compress.
+ In this case, it's the "python.tar" file located in the /home/bob directory.
+
+When you run this command, it will compress the "python.tar" file, and the compressed 
+file will typically have a ".gz" extension. So, after running this command, you will likely
+ have a file named "python.tar.gz" in the same directory (/home/bob). This compressed file will 
+take up less disk space compared to the original "python.tar" file, making it easier to store and 
+transfer.
+
+To decompress a Gzip-compressed file, you can use the gunzip or gzip -d command, followed by 
+the filename of the compressed file. For example:
+
+bash
+
+gzip -d /home/bob/python.tar.gz
+
+This command would decompress the "python.tar.gz" file back into "python.tar" in the same directory.
+
+3. There is a compressed file called eaglet.dat.gz located under the eagle directory. 
+Extract it in the same location.
+
+4. A file called caleston-code has been copied somewhere inside the /opt directory. 
+But, Bob does not remember which directory he saved it in.
+
+Can you find it?
+
+Bob's password is caleston123
+solution
+sudo find  /opt -name caleston-code
+
+5. Find the location of the file called dummy.service under /etc filesystem and redirect
+ its absolute path to the file /home/bob/dummy-service.
+
+You can use the redirect operator with the echo command to save the answer to the file.
+
+Bob's password is caleston123.
+echo /etc/systemd/system/dummy.service > /home/bob/dummy-service
+
+6. Find the file under /etc directory that contains the string 172.16.238.197. Save the
+ answer using the absolute path in the file /home/bob/ip.
+
+Bob's password is caleston123
+sudo grep -ir 172.16.238.197 /etc/ > /home/bob/ip
+
+7. Create a new file called /home/bob/file_with_data.txt. This file should have one line 
+of text that says a file in my home directory.
+
+Make use of the redirect operator.
+
+solution
+echo "a file in my home directory" > /home/bob/file_with_data.txt
+
+8. Run the command python3 /home/bob/my_python_test.py and redirect the standard error to the
+ file /home/bob/py_error.txt.
+
+Bob's password is caleston123
+Use the 2> operator.
+
+Run the command python3 /home/bob/my_python_test.py and redirect the standard error to the
+ file /home/bob/py_error.txt.
+what is the solution
+
+To run a Python script (my_python_test.py) and redirect the standard error (stderr) to a file 
+(py_error.txt), you can use the following command in a Unix/Linux terminal:
+
+bash
+
+python3 /home/bob/my_python_test.py 2> /home/bob/py_error.txt
+
+Here's what this command does:
+
+    python3: This is the command to run the Python interpreter.
+    /home/bob/my_python_test.py: This is the path to your Python script that you want to execute.
+
+The 2> is used to redirect the standard error (file descriptor 2) to the specified file 
+/home/bob/py_error.txt. This means that any error messages or output generated by your Python 
+script will be captured and written to the "py_error.txt" file instead of appearing on the terminal.
+
+So, after running this command, you can check the "py_error.txt" file to see if there are any
+ error messages or output generated by your Python script.
+
+9. Read the file /usr/share/man/man1/tail.1.gz and without extracting redirect the contents 
+to a file called /home/bob/pipes.
+solution
+zcat /usr/share/man/man1/tail.1.gz | tee /home/bob/pipes
+
+zcat /usr/share/man/man1/tail.1.gz | tee /home/bob/pipes
+
+The command you provided, zcat /usr/share/man/man1/tail.1.gz | tee /home/bob/pipes, performs the
+ following operations:
+
+    zcat /usr/share/man/man1/tail.1.gz: This part of the command uses zcat to display the contents
+ of the compressed manual page file "tail.1.gz." zcat is similar to cat, but it is used for compressed
+ files (in this case, a Gzip-compressed file).
+
+    |: This is the pipe operator. It takes the output (stdout) of the command on its left side and
+ uses it as input for the command on its right side.
+
+    tee /home/bob/pipes: The tee command is used to read from standard input and write to both
+ standard output (usually the terminal) and one or more files. In this case, it's writing the output
+ from zcat to the file "/home/bob/pipes."
+
+So, this command will display the contents of the Gzip-compressed manual page for the "tail" command 
+and simultaneously save that content to a file called "pipes" in the "/home/bob" directory.
+
+After running this command, you can view the content of the "pipes" file using a text editor or a pager like less:
+
+bash
+
+less /home/bob/pipes
+
+This allows you to examine the "tail" manual page or whatever other content was in the compressed file.
+
+
+
+
+
+
+:wq!
+
+
+
