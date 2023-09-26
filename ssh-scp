@@ -1,0 +1,49 @@
+SH AND SCP
+1. Which port number does the SSH service use by default?
+
+Bob's default password is caleston123
+solution
+port 22
+
+2. If you run ssh devapp01 in the terminal, which user are you using to connect to the server?
+
+If unsure, try it out on the terminal.
+solution
+If no user is specified with the ssh command, the connection will be attempted with the logged-in user which is bob
+(the current user)
+
+3. Now, let's set up password-less ssh between Bob's laptop and the Dev Application server devapp01.
+
+We will make use of bob's user account that has been created in the application server.
+
+It uses the same default password: caleston123
+
+4. First, generate the SSH key-pair using the ssh-keygen command in the caleston-lp10 server.
+
+Key Type - RSA
+solution
+Run: ssh-keygen -t rsa
+
+Use all default options by keying in enter whenever prompted.
+
+5. The public key created using the previous command is:
+solution
+/home/bob/.ssh/id_rsa.pub
+
+6. Copy the public key to the target server devapp01.
+
+Make use of the ssh-copy-id command
+solution
+Run: ssh-copy-id bob@devapp01
+
+Enter the password when prompted.
+
+7. Which file on the target server is the public key copied in to?
+solution
+The public key is added to the authorized_keys file under /home/bob/.ssh directory
+
+8. Finally, copy the file /home/bob/caleston-code.tar.gz from Bob's laptop to the server devapp01
+
+Copy the file to Bob's home directory.
+solution
+Run: scp /home/bob/caleston-code.tar.gz devapp01:/home/bob
