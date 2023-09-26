@@ -1,0 +1,111 @@
+ER ACCOUNT MANAGEMENT
+
+1. This lab requires some commands to be run as the root user. Always use sudo.
+
+Bob's default password is caleston123
+
+2. What type of account does Bob use?
+solution
+Bob falls into the category of a user. Hence, the most appropriate answer is User Account.
+
+3. Which of the following commands will show you the UID for a user?
+
+If unsure, try out the commands in the terminal and find the answer!
+solution
+Try the id command. It will show you the UID.
+
+4. What is the UID for bob?
+solution
+
+5. What level of sudo access does bob have in this system?
+solution
+Run: sudo grep bob /etc/sudoers. Bob has ALL permissions (4th field)
+bob has all permisions
+
+6.Which access control file has the encrypted password for the users?
+solution
+un: sudo grep bob /etc/shadow and look for the password field which is the second field delimited by a :.
+
+7. A user called chris has been created.
+
+Can you find out his Full Name?
+solution
+Inspect the password file: sudo grep chris /etc/passwd
+
+8. Which groups are chris part of?
+solution
+Run: id chris
+
+9. What is chris's primary group?
+solution
+from the id chris command, find the group associated with the GID
+
+10. Now, lets create a new user called sarah. Once done, set her password to caleston321
+solution
+Run: sudo useradd sarah
+and then sudo passwd sarah to change the password.
+
+11. Create a group called john with the GID 1010. Next create another user called john 
+with UID = 1010, primary group = john and login shell = /bin/sh
+solution
+Run: sudo groupadd -g 1010 john
+sudo useradd -u 1010 -g 1010 -s /bin/sh john
+
+FILE PERMISIONS AND OWNERSHIP
+1. This lab requires some commands to be run as the root user. Always use sudo.
+
+Bob's default password is caleston123
+
+2. A new directory called sports has been created in your home directory. Inspect it.
+
+What is the permission set for the owner of this directory?
+solution
+Run: ls -ld /home/bob/sports and look at the permissions set for the owner.
+
+rwx means the owner has full permissions to read, write and execute
+full permisions
+
+3. What is the permission set for group users for the same directory sports?
+solution
+Run: ls -ld /home/bob/sports and look at the permissions set for the group.
+
+r-x means the group has permissions to read  and execute
+read and execute
+
+4. What are the permissions set for other users for the sports directory?
+solution
+Run: ls -ld /home/bob/sports and look at the permissions set for others.
+
+--- means no permissions set for others!
+
+5. Who's the owner of this directory?
+solution
+Use the same command as before ls -ld /home/bob/sports and see the owner field.
+
+It is set to the user account bob
+
+6. A new file called soccer has been created under the sports directory.
+
+It has full permissions, update the file so that the group and others only have read and execute permissions.
+solution
+use: chmod 755 /home/bob/sports/soccer or chmod go-w /home/bob/sports/soccer
+
+or any other varaition of the chmod command to get to the desired result.
+
+7. Now, add back the write permission for group and remove all permission for others for the same file called soccer.
+solution
+use: chmod 770 /home/bob/sports/soccer or chmod g+w,o-rwx /home/bob/sports/soccer
+
+or any other varaition of the chmod command to get to the desired result.
+
+8. Now, change the ownership of the file called soccer to the service account called mercury.
+solution
+Use: sudo chown mercury /home/bob/sports/soccer
+
+9. We have created another file in the sports directory. Change the ownership for the entire sports directory including all the files inside to the service account mercury.
+
+Try to do this with one single command. Explore the -R recursive flag with the chown command.
+solution
+run: sudo chown -R mercury /home/bob/sports
+
+
