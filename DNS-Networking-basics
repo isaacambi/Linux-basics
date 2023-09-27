@@ -1,0 +1,105 @@
+
+1. What is the IP address of the DNS Server used in this system?
+solution
+run: cat /etc/resolv.conf and look at the server's IP address
+
+2. Which file is responsible for host file-based DNS resolution?
+solution
+The answer is /etc/hosts. Check this file and inspect the entries.
+
+3. What is the configuration file used for the DNS Server?
+solution
+The answer is /etc/resolv.conf. You can see the DNS Server configuration in this file.
+
+4. Change the DNS Server to google's DNS which is 8.8.8.8
+
+bob's password is caleston123.
+solution
+Edit the /etc/resolv.conf file and change the nameserver IP to 8.8.8.8
+sudo vi /etc/resolv.conf
+
+5. Which order is used currently to resolve an IP address in the system?
+
+Check the nsswitch.conf file
+solution
+Run: grep hosts /etc/nsswitch.conf, since the files precede the dns option, 
+it will first check host file
+hosts: files dns
+
+6. Change the order to DNS first and then hosts.
+solution
+Update /etc/nsswitch.conf and change the line to hosts:   dns files
+
+7. Which search domain is configured in this system ?
+
+Inspect the DNS configuration file.
+solution
+check for the search domain in /etc/resolv.conf. It is set to caleston.ca
+
+NETWORKING BASICS
+1. What is the IP Address assigned to Bob's Laptop?
+solution
+Run: ip a and check the IP address assigned (besides the localhost 127.0.0.1)
+
+2. What is the name of the interface that has this IP (from the previous question) address assigned?
+solution
+Run: ip a and check the interfaces to which the IP's is assigned or
+Run: ip link
+
+3. What is the default gateway configured in the system?
+solution
+Run: ip r and check the GW assigned to default route.
+It should be 172.16.238.1
+
+4. We have an apache which should be accessible on devapp01-web.
+
+This server runs on port 80 on the server and should be accessible from Bob's laptop.
+
+5. However, something seems to be wrong with the network!
+Check if you are able to connect to the HTTP port 80 on the server devapp01-web from Bob's laptop?
+
+Run a Telnet port 80 on devapp01-web to test.
+solution
+No
+
+6. Are you able to ping devapp01-web server?
+solution
+Run: sudo ping devapp01-web
+
+7. Luckily, this webserver has two interfaces. The second interface is on another 
+network and is identified by the name devapp01. Check if you are able to ping devapp01
+
+Is ping working now?
+solution
+Run: sudo ping devapp01
+
+8. Let's troubleshoot from the other end. SSH to the webserver by running ssh devapp01
+
+Use Bob's default password: caleston123
+
+9. Inspect the interface eth0 on devapp01, is it UP?
+solution
+No
+
+10.Bring up the eth0 interface
+solution
+Run: sudo ip link set dev eth0 up
+
+11. While we are at it, there is also a missing default route on the server devapp01.
+
+Add the default route via eth0 gateway.
+solution
+
+To add the default route via eth0 gateway, run the following command:
+
+sudo ip r add default via 172.16.238.1
+
+
+To delete the default route using the ip r command, you can use the following command:
+
+sudo ip r del default
+
+
+This command removes the default route from the routing table. Make sure to run the
+ command with appropriate permissions, such as using sudo, to have the necessary privileges
+ to modify the routing table.
