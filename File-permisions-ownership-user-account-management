@@ -96,7 +96,7 @@ or any other varaition of the chmod command to get to the desired result.
 solution
 use: chmod 770 /home/bob/sports/soccer or chmod g+w,o-rwx /home/bob/sports/soccer
 
-or any other varaition of the chmod command to get to the desired result.
+or any other variation of the chmod command to get to the desired result.
 
 8. Now, change the ownership of the file called soccer to the service account called mercury.
 solution
